@@ -30,3 +30,28 @@ class Point(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Image(models.Model):
+    image = models.ImageField(
+        verbose_name='Фото')
+
+    to_point = models.ForeignKey(
+        Point,
+        verbose_name='К локации',
+        related_name='images',
+        on_delete=models.CASCADE,
+        null=False)
+
+    position = models.IntegerField(
+        verbose_name='Позиция',
+        db_index=True,
+        unique=True,
+        null=False)
+
+    class Meta:
+        verbose_name = 'Фоторгафия'
+        verbose_name_plural = 'Фотографии'
+
+    def __str__(self):
+        return f'{str(self.position)} {self.to_point.title}'
