@@ -1,36 +1,29 @@
 from django.shortcuts import render
+from places.models import Point
 
 
 def map_poster(request):
 
-    places_geojson = {
-    "type": "FeatureCollection",
-        "features": [
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [37.62, 55.793676]
+    points = []
+    points_set = Point.objects.all()
+    for point_set in points_set:
+        point = {
+            'type': 'Feature',
+            'geometry': {
+                'type': 'Point',
+                'coordinates': [point_set.longitude, point_set.latitude]
             },
-            "properties": {
-                "title": "«Легенды Москвы",
-                "placeId": "moscow_legends",
-                "detailsUrl": "https://raw.githubusercontent.com/devmanorg/where-to-go-frontend/master/places/moscow_legends.json"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [37.64, 55.753676]
-            },
-            "properties": {
-                "title": "Крыши24.рф",
-                "placeId": "roofs24",
-                "detailsUrl": "https://raw.githubusercontent.com/devmanorg/where-to-go-frontend/master/places/roofs24.json"
+            'properties': {
+                'title': point_set.title,
+                'placeId': point_set.id,
+                'detailsUrl': ''
             }
         }
-        ]
+        points.append(point)
+
+    places_geojson = {
+        'type': 'FeatureCollection',
+        'features': points
         }
     return render(
         request,
