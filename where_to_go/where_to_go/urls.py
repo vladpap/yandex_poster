@@ -23,4 +23,5 @@ from where_to_go import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.map_poster),
+    path('places/<int:post_id>', views.poster_detail_view)
     ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

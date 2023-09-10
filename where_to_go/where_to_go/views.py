@@ -1,3 +1,5 @@
+from django.http import HttpResponse
+from django.http import JsonResponse
 from django.shortcuts import render
 from places.models import Point
 
@@ -29,3 +31,7 @@ def map_poster(request):
         request,
         'index.html',
         context={'places_geojson': places_geojson})
+
+
+def poster_detail_view(request, post_id):
+    return JsonResponse(Point.get_point_from_id(post_id))
