@@ -1,4 +1,3 @@
-from django.http import HttpResponse
 from django.http import JsonResponse
 from django.shortcuts import render
 from places.models import Point
@@ -18,7 +17,7 @@ def map_poster(request):
             'properties': {
                 'title': point_set.title,
                 'placeId': point_set.id,
-                'detailsUrl': ''
+                'detailsUrl': f'/places/{point_set.id}'
             }
         }
         points.append(point)
