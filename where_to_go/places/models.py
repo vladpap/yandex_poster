@@ -1,6 +1,5 @@
 from django.db import models
-from django.conf import settings
-
+from django.utils.html import mark_safe
 
 
 class Point(models.Model):
@@ -74,3 +73,10 @@ class Image(models.Model):
 
     def __str__(self):
         return f'{str(self.position)} {self.to_point.title}'
+
+    def thumbnail(self):
+        return mark_safe(
+            '<img src="{}" height="200px" />'.format(
+                self.image.url))
+
+    # thumbnail.short_description = 'Thumbnail'
