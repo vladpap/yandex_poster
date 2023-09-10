@@ -64,12 +64,14 @@ class Image(models.Model):
     position = models.IntegerField(
         verbose_name='Позиция',
         db_index=True,
-        unique=True,
-        null=False)
+        blank=False,
+        null=False,
+        default=0)
 
     class Meta:
         verbose_name = 'Фоторгафия'
         verbose_name_plural = 'Фотографии'
+        ordering = ['position']
 
     def __str__(self):
         return f'{str(self.position)} {self.to_point.title}'
