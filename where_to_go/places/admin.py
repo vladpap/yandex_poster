@@ -3,7 +3,10 @@ from django.contrib import admin
 from .models import Point, Image
 
 
-# Register your models here.
-admin.site.register(Point)
-admin.site.register(Image)
 
+class ImageInline(admin.TabularInline):
+    model = Image
+
+@admin.register(Point)
+class PointAdmin(admin.ModelAdmin):
+    inlines = [ImageInline]
