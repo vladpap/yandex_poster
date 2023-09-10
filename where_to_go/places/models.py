@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils.html import mark_safe
 
+from tinymce.models import HTMLField
+
 
 class Point(models.Model):
     title = models.CharField(
@@ -12,7 +14,7 @@ class Point(models.Model):
         max_length=500,
         db_index=True)
 
-    description_long = models.TextField(
+    description_long = HTMLField(
         verbose_name='Описание')
 
     longitude = models.DecimalField(
