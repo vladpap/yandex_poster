@@ -31,6 +31,7 @@ $ python3 manage.py migrate
 $ python3 manage.py createsuperuser
 $ python3 manage.py runserver
 ```
+[Локальный сайт](http://127.0.0.1:8000/), и [Административная часть сайта](http://127.0.0.1:8000/admin/)
 
 ## Цели проекта
 
