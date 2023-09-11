@@ -33,6 +33,8 @@ $ python3 manage.py runserver
 ```
 [Локальный сайт](http://127.0.0.1:8000/), и [Административная часть сайта](http://127.0.0.1:8000/admin/)
 
+[Сайт на удаленном сервере](https://vladpap.pythonanywhere.com/), и [Административная часть удаленного сайта](https://vladpap.pythonanywhere.com/admin/) (логин: admin пароль: kliekl)
+
 ## Цели проекта
 
 Код написан в учебных целях — это командный проект на курсе по Python [Devman](https://dvmn.org).
