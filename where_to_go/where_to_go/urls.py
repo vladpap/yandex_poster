@@ -17,7 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-from django.urls import path, include
+from django.views.static import serve
+from django.urls import path, re_path, include
 from where_to_go import views
 
 urlpatterns = [
@@ -25,4 +26,7 @@ urlpatterns = [
     path('', views.map_poster),
     path('places/<int:post_id>', views.poster_detail_view),
     path('tinymce/', include('tinymce.urls')),
-    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    ]
+    
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += [re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT,}),]
