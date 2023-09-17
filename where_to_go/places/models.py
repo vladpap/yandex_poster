@@ -57,7 +57,7 @@ class Image(models.Model):
     class Meta:
         verbose_name = 'Фоторгафия'
         verbose_name_plural = 'Фотографии'
-        ordering = ['position']
+        ordering = ['to_point__title']
 
     def __str__(self):
         return f'{str(self.position)} {self.to_point.title}'
@@ -68,3 +68,6 @@ class Image(models.Model):
             '"max-height:200px;max-width:300px;height:auto;width:auto;" />',
             self.image.url
         )
+
+    def get_to_point(self):
+        return self.to_point.title

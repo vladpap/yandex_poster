@@ -13,3 +13,11 @@ class ImageInline(SortableStackedInline):
 @admin.register(Point)
 class SortablePointAdmin(SortableAdminBase, admin.ModelAdmin):
     inlines = [ImageInline]
+
+
+@admin.register(Image)
+class ImageAdmin(admin.ModelAdmin):
+    list_display = (
+        'get_thumbnail',
+        'get_to_point'
+    )
