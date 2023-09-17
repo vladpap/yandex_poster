@@ -35,6 +35,17 @@ $ python3 manage.py runserver
 
 [Сайт на удаленном сервере](https://vladpap.pythonanywhere.com/), и [Административная часть удаленного сайта](https://vladpap.pythonanywhere.com/admin/) (логин: admin пароль: kliekl)
 
+## Добавление локации с помощью команды
+```console
+$ python3 manage.py url_json_position
+```
+где `url_json_position` url json файла
+
+пример
+```console
+$ python3 manage.py https://raw.githubusercontent.com/devmanorg/where-to-go-places/master/places/%D0%90%D0%BD%D1%82%D0%B8%D0%BA%D0%B0%D1%84%D0%B5%20Bizone.json
+```
+
 ## Образец json файла
 ```console
 {
