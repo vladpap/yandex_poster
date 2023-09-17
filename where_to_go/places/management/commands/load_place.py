@@ -1,15 +1,13 @@
-from django.core.management.base import BaseCommand
-
-import requests
-from tqdm import tqdm
-
-from django.core.files import File
-from django.core.files.temp import NamedTemporaryFile
-
-from ...models import Point, Image
-
 import os
 from urllib.parse import urlparse
+
+import requests
+from django.core.files import File
+from django.core.files.temp import NamedTemporaryFile
+from django.core.management.base import BaseCommand
+from tqdm import tqdm
+
+from ...models import Image, Point
 
 
 def tqdm_enumerate(iter):

@@ -1,8 +1,7 @@
+from adminsortable2.admin import SortableAdminBase, SortableStackedInline
 from django.contrib import admin
-from adminsortable2.admin import SortableStackedInline, SortableAdminBase
 
-
-from .models import Point, Image
+from .models import Image, Point
 
 
 class ImageInline(SortableStackedInline):
