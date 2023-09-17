@@ -64,6 +64,7 @@ class Image(models.Model):
 
     def get_thumbnail(self):
         return format_html(
-            '<img src="{}" height="200px" />',
+            '<img src="{}" style='
+            '"max-height:200px;max-width:300px;height:auto;width:auto;" />',
             self.image.url
         )
