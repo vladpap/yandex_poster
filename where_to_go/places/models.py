@@ -6,7 +6,8 @@ from tinymce.models import HTMLField
 class Point(models.Model):
     title = models.CharField(
         max_length=150,
-        verbose_name='Название')
+        verbose_name='Название',
+        unique=True)
 
     short_description = models.TextField(
         verbose_name='Короткое описание',
