@@ -36,23 +36,6 @@ class Point(models.Model):
     def __str__(self):
         return self.title
 
-    def get_point_from_id(id):
-        point = Point.objects.filter(id=id).first()
-        images = []
-        for image in point.images.all():
-            images.append(f'.{image.image.url}')
-        asd = {
-            "title": point.title,
-            "imgs": images,
-            "description_short": point.description_short,
-            "description_long": point.description_long,
-            "coordinates": {
-                "lng": point.longitude,
-                "lat": point.latitude
-                }
-        }
-        return asd
-
 
 class Image(models.Model):
     image = models.ImageField(
