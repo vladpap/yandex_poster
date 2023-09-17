@@ -62,8 +62,7 @@ class Image(models.Model):
         Point,
         verbose_name='К локации',
         related_name='images',
-        on_delete=models.CASCADE,
-        null=False)
+        on_delete=models.CASCADE)
 
     position = models.IntegerField(
         verbose_name='Позиция',
