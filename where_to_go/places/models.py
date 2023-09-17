@@ -8,13 +8,13 @@ class Point(models.Model):
         max_length=150,
         verbose_name='Название')
 
-    description_short = models.TextField(
+    short_description = models.TextField(
         verbose_name='Короткое описание',
         blank=True,
         null=True,
         db_index=True)
 
-    description_long = HTMLField(
+    long_description = HTMLField(
         verbose_name='Описание',
         blank=True,
         null=True)
