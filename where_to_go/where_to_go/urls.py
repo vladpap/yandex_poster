@@ -25,7 +25,7 @@ from places import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.map_poster),
-    path('places/<int:post_id>', views.poster_detail_view),
+    path('places/<int:post_id>', views.poster_detail_view, name='detail_view'),
     path('tinymce/', include('tinymce.urls')),
     ]
 
