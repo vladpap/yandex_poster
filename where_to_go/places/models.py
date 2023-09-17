@@ -62,7 +62,7 @@ class Image(models.Model):
     def __str__(self):
         return f'{str(self.position)} {self.to_point.title}'
 
-    def thumbnail(self):
+    def get_thumbnail(self):
         return mark_safe(
             '<img src="{}" height="200px" />'.format(
                 self.image.url))

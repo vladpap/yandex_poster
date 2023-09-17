@@ -6,7 +6,7 @@ from .models import Image, Point
 
 class ImageInline(SortableStackedInline):
     model = Image
-    readonly_fields = ('thumbnail', )
+    readonly_fields = ('get_thumbnail', )
     ordering = ('position', )
 
 
