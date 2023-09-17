@@ -81,5 +81,3 @@ class Image(models.Model):
         return mark_safe(
             '<img src="{}" height="200px" />'.format(
                 self.image.url))
-
-    # thumbnail.short_description = 'Thumbnail'
