@@ -37,7 +37,7 @@ $ python3 manage.py runserver
 
 ## Добавление локации с помощью команды
 ```console
-$ python3 manage.py url_json_position
+$ python3 manage.py load_place url_json_position
 ```
 где `url_json_position` url json файла
 
