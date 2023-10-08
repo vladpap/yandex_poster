@@ -12,13 +12,11 @@ class Point(models.Model):
     short_description = models.TextField(
         verbose_name='Короткое описание',
         blank=True,
-        null=True,
         db_index=True)
 
     long_description = HTMLField(
         verbose_name='Описание',
-        blank=True,
-        null=True)
+        blank=True)
 
     longitude = models.DecimalField(
         verbose_name='Долгота',
@@ -52,7 +50,6 @@ class Image(models.Model):
         verbose_name='Позиция',
         db_index=True,
         blank=True,
-        null=True,
         default=0)
 
     class Meta:
