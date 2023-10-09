@@ -1,8 +1,7 @@
 import os
-import urllib
 
 import requests
-from django.core.files import File
+from django.core.files.base import ContentFile
 from django.core.management.base import BaseCommand
 from tqdm import tqdm
 
@@ -32,15 +31,14 @@ class Command(BaseCommand):
             )
 
         for index, image_url in tqdm_enumerate(point_from_url['imgs']):
-            image = Image()
-            image.to_point = point
-            image.position = index
-            image.image.save(
-                os.path.basename(image_url),
-                File(open(urllib.request.urlretrieve(image_url)[0],
-                          mode='rb')
-                     )
-                )
+            response = requests.get(image_url)
+            uploaded_photo = ContentFile(
+               response.content,
+               name=os.path.basename(image_url))
+            Image.objects.create(
+                to_point=point,
+                position=index,
+                image=uploaded_photo)
 
     def add_arguments(self, parser):
         parser.add_argument('url_json_position',
