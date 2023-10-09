@@ -23,10 +23,12 @@ class Command(BaseCommand):
         point_from_url = response.json()
         point, created = Point.objects.get_or_create(
             title=point_from_url['title'],
-            short_description=point_from_url['description_short'],
-            long_description=point_from_url['description_long'],
-            longitude=point_from_url['coordinates']['lng'],
-            latitude=point_from_url['coordinates']['lat']
+            defaults={
+                'short_description': point_from_url['description_short'],
+                'long_description': point_from_url['description_long'],
+                'longitude': point_from_url['coordinates']['lng'],
+                'latitude': point_from_url['coordinates']['lat']
+                }
             )
 
         for index, image_url in tqdm_enumerate(point_from_url['imgs']):
