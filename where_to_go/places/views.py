@@ -6,7 +6,9 @@ from places.models import Point
 
 def poster_detail_view(request, post_id):
 
-    point = get_object_or_404(Point, id=post_id)
+    point = get_object_or_404(
+        Point.objects.prefetch_related('images'),
+        id=post_id)
     point_images = [f'.{image.image.url}' for image in point.images.all()]
 
     point_id = {
