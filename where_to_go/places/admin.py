@@ -17,7 +17,9 @@ class SortablePointAdmin(SortableAdminBase, admin.ModelAdmin):
 
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
+
     list_display = (
         'get_thumbnail',
         'get_to_point'
     )
+    raw_id_fields = ['to_point']
