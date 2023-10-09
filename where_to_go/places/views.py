@@ -4,14 +4,14 @@ from django.urls import reverse
 from places.models import Point
 
 
-def get_point_from_id(id):
+def poster_detail_view(request, post_id):
 
-    point = Point.objects.filter(id=id).first()
+    point = Point.objects.filter(id=post_id).first()
     point_images = []
     for image in point.images.all():
         point_images.append(f'.{image.image.url}')
 
-    return {
+    point_id = {
         "title": point.title,
         "imgs": point_images,
         "description_short": point.short_description,
@@ -21,6 +21,8 @@ def get_point_from_id(id):
             "lat": point.latitude
             }
     }
+
+    return JsonResponse(point_id)
 
 
 def map_poster(request):
@@ -46,7 +48,3 @@ def map_poster(request):
         request,
         'index.html',
         context={'places_geojson': places_geojson})
-
-
-def poster_detail_view(request, post_id):
-    return JsonResponse(get_point_from_id(post_id))
