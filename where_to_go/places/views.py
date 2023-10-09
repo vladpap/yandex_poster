@@ -1,12 +1,12 @@
 from django.http import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from places.models import Point
 
 
 def poster_detail_view(request, post_id):
 
-    point = Point.objects.filter(id=post_id).first()
+    point = get_object_or_404(Point, id=post_id)
     point_images = []
     for image in point.images.all():
         point_images.append(f'.{image.image.url}')
